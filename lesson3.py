@@ -522,4 +522,57 @@ g = (i for i in range(10) if i % 2 == 0)
 for x in g:
     print(x)
 
-    
+# 名前空間とスコープ
+animal = 'cat'
+
+def f():
+    """Test func doc"""
+    # 変数を関数内で書き換えたいときは global をつける
+    # global animal
+    animal = 'dog'
+    print('local:', locals())
+    # print(f.__name__)
+    # print(f.__doc__)
+
+f()
+print('global:', globals())
+# print('global:', __name__)
+
+print("##########################")
+# 例外処理
+l = [1, 2, 3]
+i = 5
+# del l
+
+try:
+    () + l
+# 例外の種類
+except IndexError as ex:
+    print("Don't worry: {}".format(ex))
+except NameError as ex:
+    print(ex)
+# Exception で受け取るのは好ましくない？
+except Exception as ex:
+    print('other: {}'.format(ex))
+else:
+    print('done')
+# 必ず実行される
+finally:
+    print('clean up')
+
+# 独自例外の作成
+# 開発中にあえてエラーを発生させることで間違えても気づける
+# raise IndexError('test error')
+class UppercaseError(Exception):
+    pass
+
+def check():
+    words = ['APPLE', 'orange', 'banana']
+    for word in words:
+        if word.isupper():
+            raise UppercaseError(word)
+
+try:
+    check()
+except UppercaseError as exc:
+    print('This is my fault. Go next')
