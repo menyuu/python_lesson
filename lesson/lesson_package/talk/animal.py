@@ -1,4 +1,5 @@
-from lesson_package.tools import utils
+from lesson.lesson_package.tools import utils
+
 
 def sing():
     return 'ojgo453jggiorsagoiawjo'

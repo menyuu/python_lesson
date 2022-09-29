@@ -5,7 +5,7 @@
 # フルパスもしくはモジュールから読み込むようようにする
 # import lesson_package.utils
 # 長いモジュール名なら短くする場合がある
-from lesson_package.tools import utils as u
+from lesson_package import utils as u, utils
 
 # from lesson_package.utils import say_twice
 
@@ -20,7 +20,6 @@ print(r)
 # アスタリスクのインポート
 # from lesson_package.talk import animal
 # アスタリスクでインポートすると何が入っているのかわからない場合があるので、推奨しない
-from lesson_package.talk import *
 print(animal.sing())
 print(animal.cry())
 
@@ -28,7 +27,7 @@ print(animal.cry())
 try:
     from lesson_package import utils
 except ImportError:
-    from lesson_package.tools import utils
+    pass
 utils.say_twice('word')
 
 # 組み込み関数
@@ -81,7 +80,6 @@ print(colored('test', 'red'))
 # アルファベット順に記述する
 # 1.標準ライブラリ, 2.サードパーティのライブラリ, 3.自分たちのパッケージ, 4.ローカルのファイル
 import collections
-import os
 import sys
 
 # サードパーティなどのライブラリをインポートする際は一行空ける
@@ -99,9 +97,6 @@ print(config.__file__)
 print(sys.path)
 
 # __name__と__main__
-import lesson_package.talk.animal
-
-import config
 
 print('lesson:', __name__)
 
@@ -111,7 +106,7 @@ print('lesson:', __name__)
 実際のアプリケーションだとインポートもあり得るため、記述するようにする
 """
 def main():
-    lesson_package.talk.animal.sing()
+    lesson.lesson_package.talk.animal.sing()
 
 if __name__ == '__main__':
     main()
