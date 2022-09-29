@@ -2,33 +2,71 @@
 
 # object部分は書かなくてもよいが Python2 の名残から書いている
 # 継承時にベースクラスとして扱うことを明示できる
-class Person(object):
-    # コンストラクタ(クラスの初期化)
-    # インスタンスの作成と同時に実行される
-    def __init__(self, name='name'):
-        self.name = name
-        print(self.name)
-
-    def say_something(self):
-        print('I am {}. hello'.format(self.name))
-        self.run(10)
-
-    def run(self, num):
-        print('run' * num)
-
-    #デストラクタ(オブジェクトが破壊されるときに実行される)
-    def __del__(self):
-        print('good bye')
-
-# オブジェクト指向では「人間」が「話す」といったようなものを考えるほうが直感的にわかりやすい？
-# 人間がわかりやすい
-person = Person('Mike')
-person.say_something()
-
-# 明示的にデリートする
-del person
+# class Person(object):
+#     # コンストラクタ(クラスの初期化)
+#     # インスタンスの作成と同時に実行される
+#     def __init__(self, name='name'):
+#         self.name = name
+#         print(self.name)
+#
+#     def say_something(self):
+#         print('I am {}. hello'.format(self.name))
+#         self.run(10)
+#
+#     def run(self, num):
+#         print('run' * num)
+#
+#     #デストラクタ(オブジェクトが破壊されるときに実行される)
+#     def __del__(self):
+#         print('good bye')
+#
+# # オブジェクト指向では「人間」が「話す」といったようなものを考えるほうが直感的にわかりやすい？
+# # 人間がわかりやすい
+# person = Person('Mike')
+# person.say_something()
+#
+# # 明示的にデリートする
+# del person
 
 print('######################')
+
+# 抽象クラスの作成
+import abc
+class Person(metaclass=abc.ABCMeta):
+    def __init__(self, age=1):
+        self.age = age
+
+    @abc.abstractmethod
+    def drive(self):
+        pass
+        # if self.age >= 18:
+        #     print('ok')
+        # else:
+        #     raise Exception('No drive')
+
+class Baby(Person):
+    def __init__(self, age=1):
+        if age < 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+
+    def drive(self):
+        raise Exception('No drive')
+
+class Adult(Person):
+    def __init__(self, age=18):
+        if age >= 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+
+    def drive(self):
+        print('ok')
+
+baby = Baby()
+adult = Adult()
+adult.drive()
 
 # 継承
 class Car(object):
@@ -38,6 +76,12 @@ class Car(object):
 
     def run(self):
         print('run')
+
+    def ride(selfself, person):
+        person.drive()
+
+# drive_car = Car()
+# drive_car.ride(adult)
 
 class ToyotaCar(Car):
     def run(self):
@@ -90,3 +134,13 @@ print(tesla_car.enable_auto_run)
 # print(tesla_car.model)
 # tesla_car.run()
 # tesla_car.auto_run()
+
+# クラスの属性の注意点
+# インスタンスを生成した後で変数を定義すると新しく書き換えることになるので注意
+class T(object):
+    pass
+
+t = T()
+t.name = 'Mike'
+t.age = 20
+print(t.name, t.age)
