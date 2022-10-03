@@ -1,5 +1,7 @@
 # プロパティ
 # 特定の条件に合致した時だけ値を書き換え可能にしたい場合に使う
+# アンダースコアが1つの場合は書き換えてほしくないことを示す時に @property と一緒に使う
+# アンダースコアがない場合は外部から書き換え可能なときに使う
 class Car(object):
     def __init__(self, model=None):
         self.model = model
@@ -67,3 +69,20 @@ advanced_car2.enable_auto_run = True
 print('advanced_car2 changed True')
 advanced_car2.run()
 print(advanced_car2.model, ':', advanced_car2.enable_auto_run)
+
+print('####################')
+# __ のときの注意点
+# 変数は外部から入れることが可能
+class T(object):
+    pass
+
+t = T()
+t.name = 'Mike'
+t.age = 20
+print(t.name, ':', t.age)
+
+# 下記のように外部から変数に値を入れないように注意する
+advanced_car3 = AdvancedCar()
+advanced_car3.__enable_auto_run = 'XXXXXXXXXX'
+print(advanced_car3.__enable_auto_run)
+
