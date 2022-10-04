@@ -44,3 +44,25 @@ print('####################')
 # クラス変数やクラスメソッドはクラス名から呼び出すことができる
 print(Person.kind)
 print(Person.what_is_your_kind())
+
+
+# スタティックメソッド
+# @staticmethod をつけ引数に self や cls をとらないメソッド
+# クラスとの関連性が薄く、クラスの外で定義しても問題ないもの
+# クラスとの関連があるような処理であることを示したい場合に使う
+class Person(object):
+
+    @staticmethod
+    def about(year):
+        print('about human {}'.format(year))
+
+Person.about(1999)
+
+# 上記と変わらない
+def about(year):
+    print('about human {}'.format(year))
+
+class Person(object):
+    pass
+
+about(1999)
