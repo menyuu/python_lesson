@@ -58,6 +58,12 @@ class RankingModel(CsvModel):
         except ImportError:
             pass
 
+        # csv_file_path がなければ RANKING_CSV_FILE_PATH を代入する
+        if not csv_file_path:
+            csv_file_path = RANKING_CSV_FILE_PATH
+        # csv_file_path を返す
+        return csv_file_path
+
     def load_data(self):
         """Load csv data
 
@@ -80,7 +86,8 @@ class RankingModel(CsvModel):
         """Save data to csv file"""
         # TODO (y) Use locking mechanism for avoiding dead lock issue
         # ファイルの書き込みと読み取り
-        with open(self.csv_file, 'w+') as csv_file:
+        # newline='' にすることで改行をしない
+        with open(self.csv_file, 'w+', newline='') as csv_file:
             # csv への書き込むためのオブジェクトを作成
             writer = csv.DictWriter(csv_file, fieldnames=self.column)
             # csv の作成
