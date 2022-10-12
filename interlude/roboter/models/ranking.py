@@ -115,7 +115,7 @@ class RankingModel(CsvModel):
         if not_list is None:
             not_list = []
 
-        # self.data がなければ None を返す
+        # self.data がなければ None を返し、処理が終了する
         if not self.data:
             return None
 
@@ -123,7 +123,7 @@ class RankingModel(CsvModel):
         sorted_data = sorted(self.data, key=self.data.get, reverse=True)
         # for文で sorted_data に入った辞書型のデータを1つずつ処理する
         for name in sorted_data:
-            # name に not_list が含まれていればスキップする
+            # name が not_list に含まれていればスキップする
             if name in not_list:
                 continue
             return name

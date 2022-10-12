@@ -49,6 +49,7 @@ class RestaurantRobot(Robot):
         self.ranking_model = ranking.RankingModel()
 
     # デコレーターの作成
+    # 名前が入力されていないときに helloメソッドを呼び出すように指定
     def _hello_decorator(func):
         """Decorator to say a greeting if you are not greeting the user."""
         def wrapper(self):
@@ -67,7 +68,7 @@ class RestaurantRobot(Robot):
         """Show restaurant recommended restaurant to the user."""
         # rankingモジュールにある の get_most_popular を呼び出して代入する
         new_recommend_restaurant = self.ranking_model.get_most_popular()
-        # new_recommend_restaurant がなければ None を返す
+        # new_recommend_restaurant がなければ None を返し、処理を終了する
         if not new_recommend_restaurant:
             return None
 
