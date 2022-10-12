@@ -45,6 +45,7 @@ class RestaurantRobot(Robot):
         # super で初期化の継承
         super().__init__(name=name)
         # rankingモジュールにある RankingModel を代入する
+        # 初期化でオブジェクトの作成
         self.ranking_model = ranking.RankingModel()
 
     # デコレーターの作成
