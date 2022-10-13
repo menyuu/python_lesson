@@ -6,11 +6,13 @@ from interlude.roboter.views import console
 
 DEFAULT_ROBOT_NAME = 'Roboko'
 
+
 # Robot ベースモデル
 class Robot(object):
     """Base model for Robot."""
 
-    # クラス変数の初期化とデフォルト引数
+    # クラス変数の初期化とデフォルト引数]
+
     def __init__(self, name=DEFAULT_ROBOT_NAME, user_name='', speak_color='green'):
         self.name = name
         self.user_name = user_name
@@ -34,6 +36,7 @@ class Robot(object):
             if user_name:
                 self.user_name = user_name.title()
                 break
+
 
 # レストランモデルの呼び出し
 # Robotモデルを継承する
