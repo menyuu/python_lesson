@@ -1,4 +1,5 @@
-# 今回はコードスタイルを無視して簡略的にコーディング
+# コードスタイルを無視してコーディング
+# 下に全体を import しているため
 from fabric.api import run, env, roles, task, parallel, execute, runs_once
 
 # ssh をターミナルから指定しなくてもよい
@@ -68,3 +69,34 @@ def db_init():
 def deploy_db():
     db_init()
     db_init()
+
+# import が長くなるのでまとめて * にしても良い
+# fabfile に記載されているので、fab のメソッドだとわかるため
+from fabric.api import *
+from fabric.contrib.files import *
+
+@task
+def clean_and_upload():
+    # local のメインサーバーで実行
+    local('ls -al')
+    # リモート先に置くことができる
+    put('fabfile.py', '/tmp/fabfile.py')
+    # リモート先で cd の移動コマンドを行う
+    with cd('/tmp'):
+        run('pwd')
+        run('ls -al')
+        # ファイルがあるかどうかの確認
+        print(exists('/tmp/fabfile.py'))
+
+# コードが煩雑になってくると汚いコーディングになるため別のディレクトリを作成
+# 別のディレクトリなどからも読み込める
+import db.checking
+# 出力結果の色を変更することができる
+from fabric.colors import green, red
+
+@task
+def split_test():
+    r = execute(db.checking.check)
+    print(green(r))
+    print(red('fail'))
+    print(green('success'))
