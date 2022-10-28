@@ -1,8 +1,21 @@
 ---
 
 - hosts: webservers
-  roles:
-    - common
-    - webserver
+  tasks:
+    - name: sum module
+      sum:
+        num: 10
+        touch: True
+      # 戻り値の受け取り
+      register: sum_result
+
+    # 戻り値の表示
+    - debug: var=sum_result
+    # 条件を指定する場合
+      # when: sum_result.sum > 100
+
+#  roles:
+#    - common
+#    - webserver
 
 ...
