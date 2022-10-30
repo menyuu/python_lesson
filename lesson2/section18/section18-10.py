@@ -1,25 +1,52 @@
 import collections
+import queue
 
-d = {}
-l = ['a', 'a', 'a', 'b', 'b', 'c']
-for word in l:
-    if word not in d:
-        d[word] = 0
-    d[word] += 1
+
+q = queue.Queue()
+# マルチメソッド環境で使う
+lq = queue.LifoQueue()
+l = []
+# 高速処理ができる
+d = collections.deque()
+
+# 追加
+for i in range(3):
+    q.put(i)
+    lq.put(i)
+    l.append(i)
+    d.append(i)
+
+# 取り出し
+# 下の3つはスタックしているように取り出している
+# for _ in range(3):
+#     print('FIFO queue = {}'.format(q.get()))
+#     print('LIFO queue = {}'.format(lq.get()))
+#     # print('list       = {}'.format(l.pop()))
+#     # 最初から取り出す
+#     print('list       = {}'.format(l.pop(0)))
+#     # print('deque      = {}'.format(d.pop()))
+#     print('deque      = {}'.format(d.popleft()))
+#     print()
+
+# deque はインデックスでアクセスできる()
+# print(d[1])
+# print(d[-1])
+
+# ローテーション
+print(d)
+d.rotate()
+print(d)
+d.rotate()
+print(d)
+d.rotate()
 print(d)
 
-# 簡単に書く場合
-d = {}
-l = ['a', 'a', 'a', 'b', 'b', 'c']
-for word in l:
-    d.setdefault(word, 0)
-    d[word] += 1
+# extend で追加できる
+print(d)
+d.extendleft('x')
+print(d)
+d.extend('y')
 print(d)
 
-# defaultdict で int型を初期値として扱う場合
-d = collections.defaultdict(int)
-l = ['a', 'a', 'a', 'b', 'b', 'c']
-for word in l:
-    d[word] += 1
+d.clear()
 print(d)
-
