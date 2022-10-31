@@ -76,7 +76,52 @@ print(m)
 # 数字を探したい場合
 m = re.match('[a-zA-z0-9]', '5')
 print(m)
-# 任意の英数もしくはアンダースコア(_)文字を探したい場合
+# アンダースコア(_)を探したい場合
+m = re.match('[a-zA-z0-9_]', '_')
+print(m)
+# 任意の英数もしくはアンダースコア(_)文字を探したい場合はバックスラッシュ(\)と小文字の w
+# 上記と同じ処理
 m = re.match('\w', '_')
 # m = re.match('\w', '@') == None
+print(m)
+# 英数文字以外から探したい場合はバックスラッシュ(\)と大文字の w
+# m = re.match('\W', '@')
+m = re.match('\W', '-')
+print(m)
+# 上記と同じ処理
+m = re.match('[^a-zA-z0-9_]', '@')
+print(m)
+# 数字のみを探したい場合
+m = re.match('\d', '2')
+print(m)
+# 数字以外を探したい場合
+m = re.match('\D', 'a')
+print(m)
+# a または b などを探したい場合
+m = re.match('a|b', 'a')
+print(m)
+# abc などのかたまりを探したい場合
+# プラスがあるので1回以上
+m = re.match('(abc)+', 'abcabcabc')
+# m = re.match('(abc)+', 'aaaabccccc') == None
+print(m)
+# スペースを探したい場合
+m = re.match('\s', ' ')
+print(m)
+# スペース以外を探したい場合
+m = re.match('\S', 'a')
+print(m)
+# * や + といった正規表現で使うものを探したい場合は \ を入れる
+m = re.match('\*', '*')
+print(m)
+m = re.match('\?', '?')
+print(m)
+
+# ^ をつけることによって先頭が指定した文字から始まる文字列を探す
+# m = re.search('^abc', 'test abc') == None
+m = re.search('^abc', 'abc test abc')
+print(m)
+# $ をつけることによって最後が指定した文字で終わる文字列を探す
+m = re.search('abc$', 'test abc')
+# m = re.search('abc$', 'test abc test') == None
 print(m)
