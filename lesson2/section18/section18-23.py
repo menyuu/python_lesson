@@ -1,60 +1,32 @@
-# memoizse
-# 1度処理を実行したものを保存する
-# キャッシュのような動作をする
-# def memoize(f):
-#     memo = {}
-#     def _wrapper(n):
-#         if n not in memo:
-#             memo[n] = f (n)
-#             print('hit')
-#             print(memo)
-#         return memo[n]
-#     return _wrapper
-#
-# @memoize
-# def long_func(n):
-#     r = 0
-#     for i in range(10000000):
-#         r += n * i
-#     return r
-#
-# for i in range(10):
-#     # print(long_func(i))
-#     long_func(i)
-#
-# print('next run')
-# for i in range(10):
-#     # print(long_func(i))
-#     long_func(i)
-
-
-# functools をインポートすることで上記と同じ処理をできる
 import functools
-# maxsize を指定することでキャッシュに保存する数を指定できる
-# lru_cache は最近のキャッシュなので、maxsize で指定したものは後ろから数える
-@functools.lru_cache(maxsize=5)
-def long_func(n):
-    r = 0
-    for i in range(10000000):
-        r += n * i
-    return r
 
-for i in range(10):
-    print(long_func(i))
+# def f(x, y):
+#     return x + y
 
-print(long_func.cache_info())
-
-print('next run')
-for i in range(10):
-    print(long_func(i))
-
-print(long_func.cache_info())
-# clear することでキャッシュを消す
-long_func.cache_clear()
+# def task(f):
+#     print('start')
+#     # print(f(10, 20))
+#     print(f())
+#
+# def outer(x, y):
+#     def inner():
+#         return x + y
+#     return inner
 
 
-print('more next run')
-for i in reversed(range(10)):
-    print(long_func(i))
+# task(f)
+# task(lambda x, y: x + y)
+# f = outer(10, 20)
+# print(outer(10, 20))
+# task(f)
 
-print(long_func.cache_info())
+# 上記の処理を簡単に書く
+def f(x, y):
+    return x + y
+
+def task(f):
+    print('start')
+    print(f())
+
+p = functools.partial(f, 10, 20)
+task(p)
