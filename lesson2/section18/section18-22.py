@@ -1,60 +1,40 @@
-# memoizse
-# 1度処理を実行したものを保存する
-# キャッシュのような動作をする
-# def memoize(f):
-#     memo = {}
-#     def _wrapper(n):
-#         if n not in memo:
-#             memo[n] = f (n)
-#             print('hit')
-#             print(memo)
-#         return memo[n]
-#     return _wrapper
-#
-# @memoize
-# def long_func(n):
-#     r = 0
-#     for i in range(10000000):
-#         r += n * i
-#     return r
-#
-# for i in range(10):
-#     # print(long_func(i))
-#     long_func(i)
-#
-# print('next run')
-# for i in range(10):
-#     # print(long_func(i))
-#     long_func(i)
-
-
-# functools をインポートすることで上記と同じ処理をできる
 import functools
-# maxsize を指定することでキャッシュに保存する数を指定できる
-# lru_cache は最近のキャッシュなので、maxsize で指定したものは後ろから数える
-@functools.lru_cache(maxsize=5)
-def long_func(n):
-    r = 0
-    for i in range(10000000):
-        r += n * i
-    return r
 
-for i in range(10):
-    print(long_func(i))
+def d(f):
+    def w():
+        """ Wrapper docstring"""
+        print('decorator')
+        return f()
+    return w
 
-print(long_func.cache_info())
+@d
+def example():
+    """ Example docstring"""
+    print('example')
 
-print('next run')
-for i in range(10):
-    print(long_func(i))
+example()
 
-print(long_func.cache_info())
-# clear することでキャッシュを消す
-long_func.cache_clear()
+# help で読み込んだ場合、example という関数は d関数に渡して処理をしているので
+# w() が帰ってくるようになっている
+print(example.__doc__)
+help(example)
 
+print('#######################################')
 
-print('more next run')
-for i in reversed(range(10)):
-    print(long_func(i))
+# デコレーターがついた呼び出した関数の doc などを呼び出したい場合、
+# functools.wraps() を使うことで、呼び出した関数の doc などを表示できる
+def d(f):
+    @functools.wraps(f)
+    def w():
+        """ Wrapper docstring"""
+        print('decorator')
+        return f()
+    return w
 
-print(long_func.cache_info())
+@d
+def example():
+    """ Example docstring"""
+    print('example')
+
+print(example.__doc__)
+help(example)
