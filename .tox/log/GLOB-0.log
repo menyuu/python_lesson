@@ -1,0 +1,71 @@
+action: GLOB, msg: packaging
+cwd: C:\Users\wmend\PycharmProjects\python_programming
+cmd: 'C:\Users\wmend\anaconda3\python.exe' setup.py sdist --formats=zip --dist-dir 'C:\Users\wmend\PycharmProjects\python_programming\.tox\dist'
+C:\Users\wmend\anaconda3\lib\site-packages\setuptools\_distutils\dist.py:275: UserWarning: Unknown distribution option: 'test_suits'
+  warnings.warn(msg)
+running sdist
+running egg_info
+writing python_programming_demo_app.egg-info\PKG-INFO
+writing dependency_links to python_programming_demo_app.egg-info\dependency_links.txt
+writing top-level names to python_programming_demo_app.egg-info\top_level.txt
+reading manifest file 'python_programming_demo_app.egg-info\SOURCES.txt'
+writing manifest file 'python_programming_demo_app.egg-info\SOURCES.txt'
+running check
+creating python_programming_demo_app-0.0.1
+creating python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info
+creating python_programming_demo_app-0.0.1\roboter
+creating python_programming_demo_app-0.0.1\roboter\controller
+creating python_programming_demo_app-0.0.1\roboter\models
+creating python_programming_demo_app-0.0.1\roboter\templates
+creating python_programming_demo_app-0.0.1\roboter\views
+copying files to python_programming_demo_app-0.0.1...
+copying README.txt -> python_programming_demo_app-0.0.1
+copying setup.cfg -> python_programming_demo_app-0.0.1
+copying setup.py -> python_programming_demo_app-0.0.1
+copying python_programming_demo_app.egg-info\PKG-INFO -> python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info
+copying python_programming_demo_app.egg-info\SOURCES.txt -> python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info
+copying python_programming_demo_app.egg-info\dependency_links.txt -> python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info
+copying python_programming_demo_app.egg-info\top_level.txt -> python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info
+copying roboter\__init__.py -> python_programming_demo_app-0.0.1\roboter
+copying roboter\controller\__init__.py -> python_programming_demo_app-0.0.1\roboter\controller
+copying roboter\controller\conversation.py -> python_programming_demo_app-0.0.1\roboter\controller
+copying roboter\models\__init__.py -> python_programming_demo_app-0.0.1\roboter\models
+copying roboter\models\ranking.py -> python_programming_demo_app-0.0.1\roboter\models
+copying roboter\models\robot.py -> python_programming_demo_app-0.0.1\roboter\models
+copying roboter\templates\good_by.txt -> python_programming_demo_app-0.0.1\roboter\templates
+copying roboter\templates\greeting.txt -> python_programming_demo_app-0.0.1\roboter\templates
+copying roboter\templates\hello.txt -> python_programming_demo_app-0.0.1\roboter\templates
+copying roboter\templates\which_restaurant.txt -> python_programming_demo_app-0.0.1\roboter\templates
+copying roboter\views\__init__.py -> python_programming_demo_app-0.0.1\roboter\views
+copying roboter\views\console.py -> python_programming_demo_app-0.0.1\roboter\views
+Writing python_programming_demo_app-0.0.1\setup.cfg
+creating C:\Users\wmend\PycharmProjects\python_programming\.tox\dist
+creating 'C:\Users\wmend\PycharmProjects\python_programming\.tox\dist\python_programming_demo_app-0.0.1.zip' and adding 'python_programming_demo_app-0.0.1' to it
+adding 'python_programming_demo_app-0.0.1'
+adding 'python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info'
+adding 'python_programming_demo_app-0.0.1\roboter'
+adding 'python_programming_demo_app-0.0.1\PKG-INFO'
+adding 'python_programming_demo_app-0.0.1\README.txt'
+adding 'python_programming_demo_app-0.0.1\setup.cfg'
+adding 'python_programming_demo_app-0.0.1\setup.py'
+adding 'python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info\dependency_links.txt'
+adding 'python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info\PKG-INFO'
+adding 'python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info\SOURCES.txt'
+adding 'python_programming_demo_app-0.0.1\python_programming_demo_app.egg-info\top_level.txt'
+adding 'python_programming_demo_app-0.0.1\roboter\controller'
+adding 'python_programming_demo_app-0.0.1\roboter\models'
+adding 'python_programming_demo_app-0.0.1\roboter\templates'
+adding 'python_programming_demo_app-0.0.1\roboter\views'
+adding 'python_programming_demo_app-0.0.1\roboter\__init__.py'
+adding 'python_programming_demo_app-0.0.1\roboter\controller\conversation.py'
+adding 'python_programming_demo_app-0.0.1\roboter\controller\__init__.py'
+adding 'python_programming_demo_app-0.0.1\roboter\models\ranking.py'
+adding 'python_programming_demo_app-0.0.1\roboter\models\robot.py'
+adding 'python_programming_demo_app-0.0.1\roboter\models\__init__.py'
+adding 'python_programming_demo_app-0.0.1\roboter\templates\good_by.txt'
+adding 'python_programming_demo_app-0.0.1\roboter\templates\greeting.txt'
+adding 'python_programming_demo_app-0.0.1\roboter\templates\hello.txt'
+adding 'python_programming_demo_app-0.0.1\roboter\templates\which_restaurant.txt'
+adding 'python_programming_demo_app-0.0.1\roboter\views\console.py'
+adding 'python_programming_demo_app-0.0.1\roboter\views\__init__.py'
+removing 'python_programming_demo_app-0.0.1' (and everything under it)

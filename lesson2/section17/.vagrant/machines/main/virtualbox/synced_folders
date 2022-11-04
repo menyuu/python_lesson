@@ -1,0 +1,1 @@
+{"virtualbox":{"/srv/ops":{"guestpath":"/srv/ops","hostpath":"C:/Users/wmend/PycharmProjects/python_programming/lesson2/section17/ops","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/wmend/PycharmProjects/python_programming/lesson2/section17","disabled":false,"__vagrantfile":true}}}
