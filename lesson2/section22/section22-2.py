@@ -1,4 +1,4 @@
-# コルチーン
+# コルーチン
 
 # def g_hello():
 #     yield 'hello 1'
